@@ -42,7 +42,7 @@ php artisan make:model Person
 php artisan make:controller PersonController
 ```
 
-6. Create route
+6. Create route api.php
 
 ```route
 GET: /api/person
@@ -56,4 +56,50 @@ DELETE: /api/person/{id}
 
 ```run
 php artisan serve
+```
+
+### Frontend Vue
+
+1. Install npm dependencies
+
+```install-npm
+npm install
+npm install vue vue-router vue-axios vue-devtools
+npm install vue bootstrap bootstrap-vue
+1. npm run watch
+2. php artisan serve
+```
+
+2. Edit resources/view/welcome.blade.php
+
+```welcome
+<html>
+
+<head>
+    <link href="{{ mix('css/app.css') }}" type="text/css" rel="stylesheet" />
+    <script src="{{ mix('js/app.js') }}" type="text/javascript" defer></script>
+</head>
+
+<body style='background-color: white'>
+    <div id="app">
+    </div>
+</body>
+
+</html>
+```
+
+3. routes web.php
+
+```route
+Route::get('/{any}', function () {
+    return view('welcome');
+})->where('any','.*');
+```
+
+4. Configure vue router in resources/js/components
+
+```vue router
+App.vue : sebagai root/parent dari view. Create.vue : digunakan untuk form
+tambah data Read.vue : digunakan untuk menampilkan semua data Update.vue :
+digunakan untuk memperbarui data
 ```
